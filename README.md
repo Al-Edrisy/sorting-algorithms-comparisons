@@ -28,5 +28,5 @@ To set up the project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Al-Edrisy/interactive-data-sorting-filtering.git
+   git clone https://github.com/Al-Edrisy/sorting-algorithms-comparisons.git
    cd interactive-data-sorting-filtering
