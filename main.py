@@ -1,7 +1,7 @@
 import pandas as pd
 import gradio as gd
 import plotly.graph_objs as go
-from Algorithms import SortingAlgorithms  # Assuming SortingAlgorithms is defined in the Algorithms module
+from Algorithms import SortingAlgorithms
 import time
 
 # Instantiate the SortingAlgorithms class
