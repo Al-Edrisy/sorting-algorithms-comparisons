@@ -48,6 +48,12 @@ def algorithm(file, algorithm_option, case_option, bar_width, original_color, so
         elif algorithm_option == "SelectionSort":
             image = "https://www.lavivienpost.net/wp-content/uploads/2022/01/selection-600.gif"
             sorted_data = alg.selection_sort(data_entry)
+        elif algorithm_option == "BubbleSort":
+            image = "https://www.lavivienpost.net/wp-content/uploads/2022/01/bubble-640.gif"
+            sorted_data = alg.bubble_sort(data_entry)
+        elif algorithm_option == "HeapSort":
+            image = "https://www.lavivienpost.net/wp-content/uploads/2022/02/heapsort.jpg"
+            sorted_data = alg.heap_sort(data_entry)
         else:
             return "Select which algorithm you want to use.", None, None, None, None
 
@@ -60,14 +66,14 @@ def algorithm(file, algorithm_option, case_option, bar_width, original_color, so
             go.Bar(name='Sorted Data', x=list(range(len(sorted_data))), y=sorted_data, marker_color=sorted_color, width=bar_width)
         ])
         fig.update_layout(
-            title='Sorting Algorithm Performance',
+            title='Algorithm Performance',
             xaxis_title='Index',
             yaxis_title='Value',
             barmode='group'
         )
 
         # Return the original data, sorting animation image, sorted data, elapsed time, and performance chart
-        return data_entry, image, sorted_data, delta, fig
+        return data_entry, fig, sorted_data, delta, image
     
     except pd.errors.EmptyDataError:
         return "The uploaded file is probably empty!", None, None, None, None
@@ -90,7 +96,9 @@ UI = gd.Interface(
                 "MergeSort",
                 "QuickSort",
                 "SelectionSort",
-                "InsertionSort"]
+                "InsertionSort",
+                "BubbleSort",
+                "HeapSort"]
         ),
         gd.Dropdown(
             label="Select Case Type",  # Dropdown for selecting case type
@@ -119,10 +127,10 @@ UI = gd.Interface(
     ],
     outputs=[
         gd.Textbox(label="Data entry as example: "),
-        gd.Image(label="Algorithm Animation"),
+        gd.Plot(label="Performance Chart"),
         gd.Textbox(label="Sorted Data: "),
         gd.Textbox(label="Running Time: "),
-        gd.Plot(label="Performance Chart")
+        gd.Image(label="Algorithm Animation")
     ],
     theme="light"
 )
